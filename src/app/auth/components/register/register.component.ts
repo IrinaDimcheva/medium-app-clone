@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
+
 import { register } from '../../store/actions';
 import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 import { selectIsSubmitting } from '../../store/reducers';
 import { AuthStateInterface } from '../../types/authState.interface';
-import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'mc-register',
@@ -24,7 +26,8 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<{ auth: AuthStateInterface }>
+    private store: Store<{ auth: AuthStateInterface }>,
+    private authService: AuthService
   ) {}
 
   onSubmit() {
@@ -33,5 +36,8 @@ export class RegisterComponent {
       user: this.form.getRawValue(),
     };
     this.store.dispatch(register({ request }));
+    this.authService
+      .register(request)
+      .subscribe((res) => console.log('res', res));
   }
 }

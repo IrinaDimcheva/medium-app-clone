@@ -1,4 +1,5 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideState, provideStore } from '@ngrx/store';
 
@@ -8,6 +9,7 @@ import { authFeatureKey, authReducer } from './auth/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideRouter(routes),
     provideStore(),
     provideState(authFeatureKey, authReducer),
