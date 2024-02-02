@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { TopBarComponent } from './shared/components/topBar/topBar.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, TopBarComponent],
 })
-export class AppComponent {
-  title = 'mediumclone_angular';
-}
+export class AppComponent {}
