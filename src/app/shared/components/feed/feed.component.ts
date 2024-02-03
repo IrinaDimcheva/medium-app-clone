@@ -1,16 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { feedActions } from './store/actions';
 import { combineLatest } from 'rxjs';
 import { selectError, selectFeedData, selectIsLoading } from './store/reducers';
-import { RouterLink } from '@angular/router';
+import { ErrorMessageComponent } from '../errorMessage/errorMessage';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'mc-feed',
   templateUrl: './feed.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ErrorMessageComponent, LoadingComponent],
 })
 export class FeedComponent implements OnInit {
   @Input() apiUrl: string = '';
