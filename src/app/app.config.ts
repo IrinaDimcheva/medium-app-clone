@@ -1,5 +1,5 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
@@ -9,10 +9,11 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { routes } from './app.routes';
 import { authFeatureKey, authReducer } from './auth/store/reducers';
 import * as authEffects from './auth/store/effects';
+import { authInterceptor } from './shared/services/authInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideRouter(routes),
     provideStore({
       router: routerReducer,
