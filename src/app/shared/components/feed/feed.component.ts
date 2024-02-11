@@ -10,6 +10,7 @@ import { ErrorMessageComponent } from '../errorMessage/errorMessage';
 import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment.development';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { TagListComponent } from '../tagList/tagList.component';
 
 @Component({
   selector: 'mc-feed',
@@ -21,6 +22,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TagListComponent,
   ],
 })
 export class FeedComponent implements OnInit {
