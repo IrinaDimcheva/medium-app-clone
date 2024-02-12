@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectCurrentUser } from '../../../auth/store/reducers';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { selectCurrentUser } from '../../../auth/store/reducers';
 
 @Component({
   selector: 'mc-feed-toggler',
