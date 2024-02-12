@@ -11,7 +11,6 @@ import { authFeatureKey, authReducer } from './auth/store/reducers';
 import * as authEffects from './auth/store/effects';
 import * as feedEffects from './shared/components/feed/store/effects';
 import * as tagsEffects from './shared/components/popularTags/store/effects';
-import * as getArticleEffect from './article/store/effects';
 import { authInterceptor } from './shared/services/authInterceptor';
 import {
   feedFeatureKey,
@@ -21,7 +20,6 @@ import {
   popularTagsFeatureKey,
   popularTagsReducer,
 } from './shared/components/popularTags/store/reducers';
-import { articleFeatureKey, articleReducer } from './article/store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,8 +32,7 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
-    provideState(articleFeatureKey, articleReducer),
-    provideEffects(authEffects, feedEffects, tagsEffects, getArticleEffect),
+    provideEffects(authEffects, feedEffects, tagsEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

@@ -5,7 +5,7 @@ import { ArticleService as SharedArticleService } from '../../shared/services/ar
 import { articleActions } from './actions';
 import { ArticleInterface } from '../../shared/types/article.interface';
 
-export const getArticleEffect = createEffect(
+export const articleEffects = createEffect(
   (
     actions$ = inject(Actions),
     articleService = inject(SharedArticleService)
