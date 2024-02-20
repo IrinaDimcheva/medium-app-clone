@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { combineLatest, filter, map } from 'rxjs';
 import { articleActions } from '../../store/actions';
 import {
@@ -10,7 +11,6 @@ import {
 } from '../../store/reducers';
 import { selectCurrentUser } from '../../../auth/store/reducers';
 import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
-import { CommonModule } from '@angular/common';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { ErrorMessageComponent } from '../../../shared/components/errorMessage/errorMessage';
 import { TagListComponent } from '../../../shared/components/tagList/tagList.component';
@@ -58,5 +58,9 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }));
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(articleActions.deleteArticle({ slug: this.slug }));
   }
 }
