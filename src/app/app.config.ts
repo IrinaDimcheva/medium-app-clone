@@ -11,6 +11,7 @@ import { authFeatureKey, authReducer } from './auth/store/reducers';
 import * as authEffects from './auth/store/effects';
 import * as feedEffects from './shared/components/feed/store/effects';
 import * as tagsEffects from './shared/components/popularTags/store/effects';
+import * as addToFavoritesEffects from './shared/components/addToFavorites/store/effects';
 import { authInterceptor } from './shared/services/authInterceptor';
 import {
   feedFeatureKey,
@@ -20,6 +21,7 @@ import {
   popularTagsFeatureKey,
   popularTagsReducer,
 } from './shared/components/popularTags/store/reducers';
+import { AddToFavoritesService } from './shared/components/addToFavorites/services/addToFavorites.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,7 +34,12 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
-    provideEffects(authEffects, feedEffects, tagsEffects),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      tagsEffects,
+      addToFavoritesEffects
+    ),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -40,5 +47,6 @@ export const appConfig: ApplicationConfig = {
       trace: false,
       traceLimit: 75,
     }),
+    AddToFavoritesService,
   ],
 };
